@@ -3,11 +3,7 @@
     <section class="brand-panel" aria-label="Budgetify overview">
       <h1>Budgetify</h1>
       <p>Track your money, take control of your future.</p>
-      <img
-        class="auth-illustration"
-        src="budget-friendly-icon.jpg"
-        alt="Hands holding a coin"
-      />
+      <img class="auth-illustration" src="budget-friendly-icon.jpg" alt="Hands holding a coin" />
     </section>
 
     <section class="auth-card" aria-label="Account access">
@@ -72,7 +68,7 @@
         </form>
       } @else {
         <form class="form-stack" (ngSubmit)="register()">
-          <h2>Create a Account</h2>
+          <h2>Create an Account</h2>
           <label>
             Full Name
             <input
@@ -115,10 +111,8 @@
           </label>
           <button class="primary-action" type="submit" [disabled]="isBusy()">Register</button>
           <p class="auth-footer">
-            Already have an Account?
-            <button type="button" class="link-button" (click)="setAuthMode('login')">
-              Login
-            </button>
+            Already have an account?
+            <button type="button" class="link-button" (click)="setAuthMode('login')">Login</button>
           </p>
         </form>
       }
@@ -136,7 +130,10 @@
           <span aria-hidden="true">D</span>
           Dashboard
         </button>
-        <button [class.active]="activeView() === 'transactions'" (click)="switchView('transactions')">
+        <button
+          [class.active]="activeView() === 'transactions'"
+          (click)="switchView('transactions')"
+        >
           <span aria-hidden="true">T</span>
           Transactions
         </button>
@@ -212,7 +209,8 @@
                     <small>{{ transaction.category }} - {{ formatDate(transaction.date) }}</small>
                   </div>
                   <span [class.positive]="transaction.type === 'income'">
-                    {{ transaction.type === 'income' ? '+' : '-' }}{{ formatCurrency(transaction.amount) }}
+                    {{ transaction.type === 'income' ? '+' : '-'
+                    }}{{ formatCurrency(transaction.amount) }}
                   </span>
                 </div>
               }
@@ -326,11 +324,18 @@
                     <td>{{ transaction.description }}</td>
                     <td>{{ transaction.category }}</td>
                     <td [class.income-cell]="transaction.type === 'income'">
-                      {{ transaction.type === 'income' ? '+' : '-' }}{{ formatCurrency(transaction.amount) }}
+                      {{ transaction.type === 'income' ? '+' : '-'
+                      }}{{ formatCurrency(transaction.amount) }}
                     </td>
                     <td class="action-cell">
-                      <button type="button" class="edit-button" (click)="startEdit(transaction)">Edit</button>
-                      <button type="button" class="delete-button" (click)="requestDelete(transaction.id)">
+                      <button type="button" class="edit-button" (click)="startEdit(transaction)">
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        class="delete-button"
+                        (click)="requestDelete(transaction.id)"
+                      >
                         Delete
                       </button>
                     </td>
@@ -360,7 +365,12 @@
               </label>
               <label>
                 Description
-                <input type="text" name="editDescription" [(ngModel)]="editForm.description" required />
+                <input
+                  type="text"
+                  name="editDescription"
+                  [(ngModel)]="editForm.description"
+                  required
+                />
               </label>
               <label>
                 Category
@@ -378,7 +388,14 @@
               </label>
               <label>
                 Amount
-                <input type="number" name="editAmount" min="0.01" step="0.01" [(ngModel)]="editForm.amount" required />
+                <input
+                  type="number"
+                  name="editAmount"
+                  min="0.01"
+                  step="0.01"
+                  [(ngModel)]="editForm.amount"
+                  required
+                />
               </label>
               <label class="wide">
                 Notes
@@ -386,7 +403,9 @@
               </label>
               <div class="form-actions">
                 <button type="submit" class="primary-action compact">Save Changes</button>
-                <button type="button" class="secondary-action" (click)="cancelEdit()">Cancel</button>
+                <button type="button" class="secondary-action" (click)="cancelEdit()">
+                  Cancel
+                </button>
               </div>
             </form>
           }
@@ -400,8 +419,12 @@
                   {{ transactionById(pendingDeleteId())?.description }}?
                 </p>
               </div>
-              <button type="button" class="delete-button" (click)="deleteTransaction()">Confirm Delete</button>
-              <button type="button" class="secondary-action" (click)="cancelDelete()">Cancel</button>
+              <button type="button" class="delete-button" (click)="deleteTransaction()">
+                Confirm Delete
+              </button>
+              <button type="button" class="secondary-action" (click)="cancelDelete()">
+                Cancel
+              </button>
             </div>
           }
         </section>
@@ -554,7 +577,9 @@
                   <span>{{ row.name }}</span>
                   <span>{{ formatCurrency(row.amount) }}</span>
                   <span>{{ formatCurrency(row.limit) }}</span>
-                  <span>{{ row.limit ? ((row.amount / row.limit) * 100 | number: '1.0-0') : 0 }}%</span>
+                  <span
+                    >{{ row.limit ? ((row.amount / row.limit) * 100 | number: '1.0-0') : 0 }}%</span
+                  >
                 </div>
               }
             </div>
